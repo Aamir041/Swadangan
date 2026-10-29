@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products Catalog | Swadangan Foods (BASURI Farsan Range)</title>
+  <meta name="description" content="Explore Swadangan Foods' BASURI Farsan & Namkeen catalog. Filter by spice level, dietary tags, pack sizes (200g to 5kg), and switch between Retail MRP and Wholesale Bulk tiers." />
+  <link rel="icon" type="image/jpeg" href="logo.jpeg" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Sticky Navigation Header -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand-logo">
+        <img src="logo.jpeg" alt="Swadangan Foods Official Logo" class="brand-logo__img" />
+        <div class="brand-logo__text">
+          <span class="brand-logo__title">Swadangan</span>
+          <span class="brand-logo__sub">FOODS • BASURI SERIES</span>
+          <span class="brand-logo__motto">Swad jo dil se jude</span>
+        </div>
+      </a>
+
+      <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">☰</button>
+
+      <ul class="nav-links" id="mainNavLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html" class="active">Products Catalog</a></li>
+        <li><a href="index.html#royal-showcase">Basuri Range</a></li>
+        <li><a href="index.html#manufacturing">Manufacturing & Quality</a></li>
+      </ul>
+
+      <div class="header-cta">
+        <a href="#catalogToolbarSection" class="btn btn--primary">Browse Farsan →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Compact Royal Banner for Products Page -->
+  <section class="hero-royal" style="padding: 2.75rem 0 3rem;">
+    <div class="container products-hero-grid">
+      <div>
+        <div class="hero-royal__eyebrow">
+          <span>🦚 BASURI Authentic Farsan Catalog</span>
+        </div>
+        <h1 class="hero-royal__title" style="font-size: clamp(2.1rem, 3.6vw, 3.1rem);">
+          Complete Farsan & Namkeen Range
+          <span>BASURI Royal Collection</span>
+        </h1>
+        <p class="hero-royal__desc" style="margin-bottom: 1.25rem;">
+          Explore all 9 royal varieties of <strong>BASURI Farsan</strong>: filter by spice level, dietary preferences, or ingredients, and compare nutritional facts side-by-side.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+          <a href="#catalogToolbarSection" class="btn btn--gold">
+            🔍 Filter & Browse Products
+          </a>
+        </div>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.06); border: 1.5px solid var(--gold-primary); border-radius: var(--radius-lg); padding: 0.75rem;">
+        <img
+          src="products.jpeg"
+          alt="Swadangan Foods Basuri Complete Lineup"
+          style="border-radius: calc(var(--radius-lg) - 6px); width: 100%; height: auto;"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Configurable Products Section -->
+  <section class="products-section" id="catalogToolbarSection" style="padding-top: 3rem;">
+    <div class="container">
+
+      <!-- Interactive Configurable Toolbar -->
+      <div class="catalog-toolbar">
+        <!-- Row 1: Search, Sort, Layout View -->
+        <div class="catalog-toolbar__top">
+          <div class="search-box">
+            <span class="search-box__icon">🔍</span>
+            <input
+              type="search"
+              id="catalogSearchInput"
+              placeholder="Search farsan by name, ingredient (besan, peanuts, moong), or flavor..."
+              oninput="window.SwadanganApp.setSearch(this.value)"
+            />
+          </div>
+
+          <div class="toolbar-controls">
+            <select class="select-control" aria-label="Sort Products" onchange="window.SwadanganApp.setSortBy(this.value)">
+              <option value="featured">Sort: Featured Bestsellers</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="spice-desc">Spice Level: High to Mild</option>
+              <option value="protein-desc">Protein: Highest First</option>
+            </select>
+
+            <div class="view-switcher" role="group" aria-label="Catalog View Mode">
+              <button type="button" class="view-btn active js-view-btn" data-view="grid" onclick="window.SwadanganApp.setViewType('grid')" title="Standard Grid View">
+                ⊞ Grid
+              </button>
+              <button type="button" class="view-btn js-view-btn" data-view="compact" onclick="window.SwadanganApp.setViewType('compact')" title="Compact Cards View">
+                ▦ Compact
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Category Tabs & Result Counter -->
+        <div class="catalog-toolbar__bottom">
+          <div class="category-tabs" id="categoryTabsContainer"></div>
+          <div id="catalogResultCount" style="font-size:0.86rem; font-weight:700; color:var(--maroon-primary);"></div>
+        </div>
+
+        <!-- Row 3: Spice Level & Dietary Filter Chips -->
+        <div class="filter-pills-row">
+          <span class="filter-group-label">🌶️ Spice Level:</span>
+          <button type="button" class="filter-chip active js-spice-chip" data-spice="all" onclick="window.SwadanganApp.setSpiceFilter('all')">All Levels</button>
+          <button type="button" class="filter-chip js-spice-chip" data-spice="1" onclick="window.SwadanganApp.setSpiceFilter(1)">🟢 Mild (1/4)</button>
+          <button type="button" class="filter-chip js-spice-chip" data-spice="2" onclick="window.SwadanganApp.setSpiceFilter(2)">🟡 Medium (2/4)</button>
+          <button type="button" class="filter-chip js-spice-chip" data-spice="3" onclick="window.SwadanganApp.setSpiceFilter(3)">🟠 Spicy (3/4)</button>
+          <button type="button" class="filter-chip js-spice-chip" data-spice="4" onclick="window.SwadanganApp.setSpiceFilter(4)">🔴 Fiery (4/4)</button>
+
+          <span class="filter-group-label" style="margin-left:0.75rem;">🌱 Dietary & Tags:</span>
+          <div id="dietaryChipsContainer" style="display:inline-flex; flex-wrap:wrap; gap:0.45rem;"></div>
+
+          <button
+            type="button"
+            style="margin-left:auto; font-size:0.8rem; font-weight:700; color:var(--maroon-primary); text-decoration:underline;"
+            onclick="window.SwadanganApp.resetAllFilters()"
+          >
+            ↺ Reset Filters
+          </button>
+        </div>
+      </div>
+
+      <!-- Dynamic Catalog Output (Grid / Compact / Wholesale Table) -->
+      <div id="configurableCatalogOutput"></div>
+
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="logo.jpeg" alt="Swadangan Foods Logo" class="footer-brand-logo" />
+          <p style="font-size:0.9rem; margin-bottom:1rem;">
+            <strong>Swadangan Foods™</strong> — Manufacturers of the royal <strong>BASURI</strong> range of authentic Indian Farsan & Namkeen. Made with finest ingredients for an authentic Indian taste.
+          </p>
+          <div style="font-size:0.82rem; color:var(--gold-bright);">
+            ✦ Swad jo dil se jude ✦
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Basuri Range</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" onclick="window.SwadanganApp.setCategory('signature-mix')">Signature Mixes</a></li>
+            <li><a href="javascript:void(0)" onclick="window.SwadanganApp.setCategory('sev-bhujia')">Sev & Bhujia</a></li>
+            <li><a href="javascript:void(0)" onclick="window.SwadanganApp.setCategory('dal-lentils')">Classic Dals</a></li>
+            <li><a href="javascript:void(0)" onclick="window.SwadanganApp.setCategory('peanuts-nuts')">Spiced Peanuts</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home Overview</a></li>
+            <li><a href="products.html">Products Catalog</a></li>
+            <li><a href="index.html#royal-showcase">Basuri Collection</a></li>
+            <li><a href="index.html#manufacturing">Quality & Manufacturing</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Factory & Office</h4>
+          <p style="font-size:0.88rem; margin-bottom:0.75rem;">
+            📍 Plot No. 42, Food Park Industrial Estate, GIDC, Ahmedabad, Gujarat - 382445
+          </p>
+          <p style="font-size:0.88rem; margin-bottom:0.5rem;">📞 <a href="tel:+917276365777">+91 72763 65777</a></p>
+          <p style="font-size:0.88rem; margin-bottom:0.75rem;">✉️ orders@swadanganfoods.com</p>
+          <div style="display:inline-block; padding:0.35rem 0.75rem; border:1px solid var(--border-gold); border-radius:6px; font-size:0.78rem; color:var(--gold-light);">
+            FSSAI Lic. No. 10724000123456
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Swadangan Foods™. All Rights Reserved. | 100% Pure Vegetarian Farsan</span>
+        <span>Swad jo dil se jude — Tradition in Every Crunch</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Comparison Bar -->
+  <div class="compare-bar" id="compareFloatingBar"></div>
+
+  <!-- Quick View & Comparison Modal -->
+  <div class="modal-backdrop" id="quickViewModal" onclick="if(event.target===this) window.SwadanganApp.closeQuickView()">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" onclick="window.SwadanganApp.closeQuickView()">✕</button>
+      <div id="quickViewModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/products-config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
