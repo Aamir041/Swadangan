@@ -426,7 +426,38 @@
   // PUBLIC API FOR INLINE HANDLERS
   // ============================================================================
 
+  function renderBrandContactInfo() {
+    const brand = appConfig.brand || {};
+    if (brand.phone) {
+      document.querySelectorAll(".js-brand-phone").forEach((el) => {
+        el.textContent = brand.phone;
+        if (el.tagName === "A") {
+          el.href = `tel:${brand.phone.replace(/\s+/g, "")}`;
+        }
+      });
+    }
+    if (brand.email) {
+      document.querySelectorAll(".js-brand-email").forEach((el) => {
+        el.textContent = brand.email;
+        if (el.tagName === "A") {
+          el.href = `mailto:${brand.email.trim()}`;
+        }
+      });
+    }
+    if (brand.address) {
+      document.querySelectorAll(".js-brand-address").forEach((el) => {
+        el.textContent = brand.address;
+      });
+    }
+    if (brand.fssaiNumber) {
+      document.querySelectorAll(".js-brand-fssai").forEach((el) => {
+        el.textContent = brand.fssaiNumber;
+      });
+    }
+  }
+
   function refreshAllViews() {
+    renderBrandContactInfo();
     renderCategoryTabs();
     renderDietaryFilterChips();
     renderCatalog();

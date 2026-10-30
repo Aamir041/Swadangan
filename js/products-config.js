@@ -18,9 +18,9 @@ window.SWADANGAN_CONFIG = {
     tagline: "Swad jo dil se jude",
     secondaryTagline: "Tradition in Every Crunch",
     footerTagline: "Made with finest ingredients for an authentic Indian taste",
-    whatsappNumber: "917276365777", // Format: country code + number without '+'
-    email: "orders@swadanganfoods.com",
-    phone: "+91 72763 65777",
+    whatsappNumber: "+919272301301", // Format: country code + number without '+'
+    email: "swadanganfoodsllp@gmail.com",
+    phone: "+919272301301",
     address: "Plot No. 42, Food Park Industrial Estate, GIDC, Ahmedabad, Gujarat - 382445",
     fssaiNumber: "10724000123456"
   },
